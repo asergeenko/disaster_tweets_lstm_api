@@ -7,6 +7,7 @@ Kaggle competition: [Natural Language Processing with Disaster Tweets](https://w
 ## Deployment using Docker
 ~~~
 docker build -t disaster_tweets_lstm_api .
+
 docker run -d -p 8000:8000 disaster_tweets_lstm_api
 ~~~
 

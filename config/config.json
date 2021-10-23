@@ -1,0 +1,8 @@
+{
+  "SAVED_MODEL_PATH": "models/disaster_tweets_lstm",
+  "SAVED_TOKENIZER_PATH": "models/tokenizer.pkl",
+  "RAW_DATA_PATH": "data/raw/train.csv",
+  "LOG_FILE": "disaster_tweets.log",
+  "LOG_LEVEL": "DEBUG",
+  "MAX_FEATURES": 3000
+}

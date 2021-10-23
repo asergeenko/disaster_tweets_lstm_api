@@ -1,67 +1,49 @@
 NLP with Disaster Tweets using LSTM
 ==============================
-Исходный ноутбук: [NLP with Disaster Tweets using LSTM](https://www.kaggle.com/sandhyakrishnan02/nlp-with-disaster-tweets-using-lstm)
-Соревнование: [Natural Language Processing with Disaster Tweets](https://www.kaggle.com/c/nlp-getting-started)
+Source notebook: [NLP with Disaster Tweets using LSTM](https://www.kaggle.com/sandhyakrishnan02/nlp-with-disaster-tweets-using-lstm)
+Kaggle competition: [Natural Language Processing with Disaster Tweets](https://www.kaggle.com/c/nlp-getting-started)
 
-Example of ml project
 
-Installation: 
+## Deployment using Docker
+~~~
+docker build -t disaster_tweets_lstm_api .
+docker run -d -p 8000:8000 disaster_tweets_lstm_api
+~~~
+
+## Local installation: 
 ~~~
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ~~~
-Usage:
+## Usage:
+
+### Console run
+
+#### Training
 ~~~
-python ml_example/train_pipeline.py config/train_config.yaml
+python main.py --train_file="data/raw/train.csv"
 ~~~
 
-Test:
+#### Prediction
 ~~~
-pytest tests/
+python main.py --predict_message="Damage to school bus on 80 in multi car crash"
 ~~~
 
-Project Organization
-------------
+### REST API run
+~~~
+python deploy/api.py
+~~~
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── ml_example                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- code to download or generate data
-    │   │
-    │   ├── features       <- code to turn raw data into features for modeling
-    │   │
-    │   ├── models         <- code to train models and then use trained models to make
-    │   │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+#### Endpoints
+
+- *GET /predict/{message}* - predict disaster for message
+- *POST /train/* - train model with given CSV file
 
 
---------
+## Test:
+~~~
+python -m pytest tests/
+~~~
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+Project structure is based on [ML Project Example](https://github.com/Mikhail-M/ml_project_example).

@@ -91,3 +91,5 @@ target/
 .mypy_cache/
 requirements1.txt
 *.log
+tmp_model
+send_file.py

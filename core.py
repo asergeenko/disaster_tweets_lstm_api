@@ -54,7 +54,6 @@ def train(X_train,X_test,y_train,y_test, max_features=3000):
     model.save(config['SAVED_MODEL_PATH'])
     return model
 
-#@app.get("/fit")
 def train_pipeline(input_filepath):
     train_data = pd.read_csv(input_filepath)
     train_data = preprocess_text(train_data)
@@ -82,6 +81,7 @@ def get_model():
     return model
 
 def predict(message, model):
+    '''Predict result for "message" using "model"'''
     df = pd.DataFrame({'text': [message]})
     df = preprocess_text(df)
     X = tokenize(df['clean_text'].values, config['MAX_FEATURES'], model.input_shape[1])

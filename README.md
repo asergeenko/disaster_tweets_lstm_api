@@ -1,13 +1,14 @@
 NLP with Disaster Tweets using LSTM
 ==============================
 Source notebook: [NLP with Disaster Tweets using LSTM](https://www.kaggle.com/sandhyakrishnan02/nlp-with-disaster-tweets-using-lstm)
+
 Kaggle competition: [Natural Language Processing with Disaster Tweets](https://www.kaggle.com/c/nlp-getting-started)
 
 
 ## Deployment using Docker
 ~~~
+cd deploy
 docker build -t disaster_tweets_lstm_api .
-
 docker run -d -p 8000:8000 disaster_tweets_lstm_api
 ~~~
 
